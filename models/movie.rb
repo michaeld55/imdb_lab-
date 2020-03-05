@@ -50,13 +50,13 @@ class Movie
      end
 
      def remaining_budget
-       sql='select casting.fee from casting
-       where movie_id=$1'
+       sql='SELECT casting.fee FROM casting
+       WHERE movie_id = $1'
        values=[@id]
        fees=SqlRunner.run(sql,values)
 
        # result=fees.map {|fee|fee}
-       fees = fees.reduce(0) {|total,fee| total+fee['fee'].to_i}
+       fees = fees.reduce(0) {|total,fees| total+fees['fee'].to_i}
        return remaining_budget = @budget-fees
 
      end
